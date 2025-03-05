@@ -233,11 +233,11 @@ client.on('message_create', async message => {
                 const mentionedContacts = await message.getMentions(); // Get mentioned contacts
         
                 if (mentionedContacts.length > 0) {
-                    const randomPercentage = Math.floor(Math.random() * 10); // Generate random percentage
+                    const randomPercentage = Math.floor(Math.random() * 11); // Generate random percentage
                     const contact = mentionedContacts[0]; // Get the first mentioned contact
         
                     const chat = await message.getChat(); // Get the chat
-                    const response = `@${contact.number} is ${randomPercentage}% feet tall`;
+                    const response = `@${contact.number} is ${randomPercentage} feet tall`;
                     chat.sendMessage(response, {
                         mentions: [contact]
                     });
@@ -254,11 +254,11 @@ client.on('message_create', async message => {
                 const mentionedContacts = await message.getMentions(); // Get mentioned contacts
         
                 if (mentionedContacts.length > 0) {
-                    const randomPercentage = Math.floor(Math.random() * 1000); // Generate random percentage
+                    const randomPercentage = Math.floor(Math.random() * 251); // Generate random percentage
                     const contact = mentionedContacts[0]; // Get the first mentioned contact
         
                     const chat = await message.getChat(); // Get the chat
-                    const response = `@${contact.number} is ${randomPercentage}% cm tall`;
+                    const response = `@${contact.number} is ${randomPercentage} cm tall`;
                     chat.sendMessage(response, {
                         mentions: [contact]
                     });
