@@ -268,6 +268,28 @@ client.on('message_create', async message => {
             }
         });
     
+client.on('message', async message => {
+    if(message.body.toLowerCase().startsWith('.gpt')) {
+        const prompt = message.body.replace('.gpt', '').trim();
+        if (prompt) {
+            try {
+                const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+                    prompt: prompt,
+                    max_tokens: 150
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${INSERT_OPENAI_KEY_HERE}`
+                    }
+                });
 
+                const reply = response.data.choices[0].text.trim();
+                message.reply(reply);
+            } catch (error) {
+                console.error('Error with OpenAI API:', error);
+                message.reply('Sorry, there was an error processing your request.');
+            }
+        } else {
+            message.reply('Please provide a prompt for ChatGPT.');
+        
 // Start your client
 client.initialize();
